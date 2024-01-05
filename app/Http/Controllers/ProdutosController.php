@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class ProdutosController extends Controller
 {
     public function __construct(Produto $produto){
-        $this->produto = $produto;
+        private $produto;
     }
     public function index(Request $request){
         $pesquisar = $request->pesquisar;
