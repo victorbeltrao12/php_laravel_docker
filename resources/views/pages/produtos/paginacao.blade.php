@@ -9,7 +9,7 @@
         <form action="{{ route('produto.index') }}" method="get">
             <input type="text" name="pesquisar" placeholder="Digite o nome">
             <button>Pesquisar</button>
-            <a type="button" href="" class="btn btn-success float-end">
+            <a type="button" href="{{ route('cadastrar.produto') }}" class="btn btn-success float-end">
                 Incluir Produto
             </a>
         </form>
@@ -36,7 +36,9 @@
                                     <a href="" class="btn btn-light btn-sm">
                                         Editar
                                     </a>
-                                    <a href="{{route('produto.delete')}}" class="btn btn-danger btn-sm">
+                                    <meta name="csrf-token" content="{{ csrf_token() }}" />
+                                    <a onclick="deleteRegistroPaginacao('{{ route('produto.delete') }}', {{ $Produto->id }})"
+                                        class="btn btn-danger btn-sm">
                                         Excluir
                                     </a>
                                 </td>
@@ -46,4 +48,4 @@
                 </table>
             @endif
         </div>
-@endsection
+    @endsection
