@@ -22,6 +22,7 @@
     <link rel="manifest" href="{{ asset('icones/manifest.json') }}">
     <link rel="mask-icon" href="{{ asset('icones/safari-pinned-tab.svg') }}" color="#712cf9">
     <link rel="icon" href="{{ asset('icones/favicon.ico') }}">
+    <link rel="stylesheet" href="http://cdn.bootstrapcdn.com/toastr.js/latest/css/toastr.min.css">
     <meta name="theme-color" content="#712cf9">
 
 
@@ -164,8 +165,10 @@
     {{--InputMask--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     {{--SweetAlert2--}}
-
+    {{----}}
     <script src="/js/projeto.js"></script>
+    <script src="https://cdn.bootcss.com/toastr/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
 </body>
 
 </html>

@@ -7,7 +7,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Nome</label>
-            <input type="text" class="form-control @error('nome') is-invalid @enderror" name="nome">
+            <input type="text" value="{{old('name')}}" class="form-control @error('nome') is-invalid @enderror" name="nome">
             @if ($errors->has('nome'))
                 @foreach ($errors->get('nome') as $erro)
                     <div class="invalid-feedback">
@@ -18,7 +18,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Valor</label>
-            <input id='mascara_valor' class="form-control @error('valor') is-invalid @enderror" name="valor">
+            <input id='mascara_valor' value="{{old('valor')}}" class="form-control @error('valor') is-invalid @enderror" name="valor">
             @if ($errors->has('valor'))
                 @foreach ($errors->get('valor') as $erro)
                     <div class="invalid-feedback">

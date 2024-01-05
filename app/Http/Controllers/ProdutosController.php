@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Http\Requests\FormRequestProduto;
+use App\Models\Componentes;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
@@ -30,20 +32,34 @@ class ProdutosController extends Controller
     public function cadastrarProduto(FormRequestProduto $request){
         //dd($request);
         if($request->method() == "POST"){
+            // criação dos dados
 
-            $request->validate([
-                'nome' => 'required',
-                'valor' => 'required',
-            ]);
-
-            $produto = new Produto();
-            $produto->nome = $request->nome;
-            $produto->valor = $request->valor;
-            $produto->save();
-            return redirect()->route('produto.index');}
+            $data = $request->all();
+            $componente = new Componentes();
+            $data['valor'] = $componente->formatacaoMascaraDinheiroDecimal($data['valor']);
+            Produto::create($data);
+            Toastr::success('Gravado com sucesso');
+            return redirect()->route('produto.index');
+        }
+        // Amostra dos dados
         return view('pages.produtos.create');
     }
 
 
-    
+    public function atualizarProduto(FormRequestProduto $request, $id){
+        //dd($request);
+        if($request->method() == "PUT"){
+            // altera os dados
+
+            $data = $request->all();
+            $componente = new Componentes();
+            $data['valor'] = $componente->formatacaoMascaraDinheiroDecimal($data['valor']);
+            $buscarRegistro = Produto::find($id);
+            $buscarRegistro->update($data);
+            return redirect()->route('produto.index');
+        }
+        // Amostra dos dados
+        $findProduto = Produto::where('id', '=', $id)->first();
+        return view('pages.produtos.atualiza', compact('findProduto'));
+    }
 }
