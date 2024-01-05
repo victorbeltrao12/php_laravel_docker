@@ -6,12 +6,13 @@ use App\Models\Produto;
 use App\Http\Requests\FormRequestProduto;
 use App\Models\Componentes;
 use Brian2694\Toastr\Facades\Toastr;
+
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
 {
     public function __construct(Produto $produto){
-        private $produto;
+        $this->produto = $produto;
     }
     public function index(Request $request){
         $pesquisar = $request->pesquisar;
