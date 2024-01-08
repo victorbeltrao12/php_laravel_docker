@@ -42,20 +42,18 @@ class ClientesController extends Controller
     }
 
 
-    public function atualizarCliente(FormRequestProduto $request, $id){
+    public function atualizarCliente(FormRequestCliente $request, $id){
         //dd($request);
         if($request->method() == "PUT"){
             // altera os dados
 
             $data = $request->all();
-            $componente = new Componentes();
-            $data['valor'] = $componente->formatacaoMascaraDinheiroDecimal($data['valor']);
             $buscarRegistro = Cliente::find($id);
             $buscarRegistro->update($data);
-            return redirect()->route('produto.index');
+            return redirect()->route('clientes.index');
         }
         // Amostra dos dados
-        $findProduto = Cliente::where('id', '=', $id)->first();
-        return view('pages.clientes.atualiza', compact('findProduto'));
+        $findCliente = Cliente::where('id', '=', $id)->first();
+        return view('pages.clientes.atualiza', compact('findCliente'));
     }
 }
