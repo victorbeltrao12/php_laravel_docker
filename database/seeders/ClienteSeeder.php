@@ -22,5 +22,15 @@ class ClienteSeeder extends Seeder
                 'cep' => '00000001',
             ]
         );
+
+        Cliente::create(
+            [
+                'nome' => 'Cliente 2',
+                'email' => 'cliente@ficticio.com',
+                'endereco' => 'Rua 1',
+                'logradouro' => 'Conjunto ficticio 01',
+                'cep' => '00000001',
+            ]
+        );
     }
 }

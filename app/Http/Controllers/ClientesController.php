@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Componentes;
-
+use App\Http\Requests\FormRequestCliente;
 class ClientesController extends Controller
 {
     public function __construct(Cliente $cliente){
@@ -27,17 +27,15 @@ class ClientesController extends Controller
         return response()->json(['success'=> true]);
     }
 
-    public function cadastrarCliente(Request $request){
+    public function cadastrarCliente(FormRequestCliente $request){
         //dd($request);
         if($request->method() == "POST"){
             // criação dos dados
 
             $data = $request->all();
-            $componente = new Componentes();
-            $data['valor'] = $componente->formatacaoMascaraDinheiroDecimal($data['valor']);
             Cliente::create($data);
             Toastr::success('Gravado com sucesso');
-            return redirect()->route('produto.index');
+            return redirect()->route('clientes.index');
         }
         // Amostra dos dados
         return view('pages.clientes.create');
