@@ -8,6 +8,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Venda;
 use App\Models\Produto;
 use App\Models\Cliente;
+use App\Mail\ComprovanteDeVendaEmail;
 
 
 class VendaController extends Controller
@@ -42,4 +43,21 @@ class VendaController extends Controller
 
         return view('pages.vendas.create', compact('findNumeracao', 'findProduto', 'findCliente'));
     }
+
+    public function enviaComprovantePorEmail($id){
+        $buscaVenda = Venda::where('id', '=', $id)->first();
+        $produtoNome = $buscaVenda->produto->nome;
+        $clienteEmail = $buscaVenda->cliente->email;
+        $clienteNome = $buscaVenda->cliente->nome;
+
+        $sendMailData = [
+            'produtoNome' => $produtoNome,
+            'clienteNome' => $clienteNome
+        ];
+        Mail::to($$clienteEmail)->send(new ComprovanteDeVendaEmail($sendMailData));
+        return redirect()->route('vendas.index');
+    }
+
+
+    
 }

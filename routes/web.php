@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::prefix('dashboard')->group(function () {
+    Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+});
+
 //CRUD Produtos
 Route::prefix('produtos')->group(function () {
     Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
@@ -53,4 +57,5 @@ Route::prefix('vendas')->group(function () {
     //Cadastro
     Route::get('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
     Route::post('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
+    Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
 });

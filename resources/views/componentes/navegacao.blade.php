@@ -10,7 +10,7 @@
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
-                        href="#">
+                        href="{{route('dashboard.index')}}">
                         <svg class="bi">
                             <use xlink:href="#house-fill" />
                         </svg>
@@ -18,7 +18,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="{{route('vendas.index')}}">
+                    <a class="nav-link d-flex align-items-center gap-2 active" href="{{route('vendas.index')}}">
                         <svg class="bi">
                             <use xlink:href="#file-earmark" />
                         </svg>
@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="{{route('produto.index')}}">
+                    <a class="nav-link d-flex align-items-center gap-2 active" href="{{route('produto.index')}}">
                         <svg class="bi">
                             <use xlink:href="#cart" />
                         </svg>
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="{{route('clientes.index')}}">
+                    <a class="nav-link d-flex align-items-center gap-2 active" href="{{route('clientes.index')}}">
                         <svg class="bi">
                             <use xlink:href="#people" />
                         </svg>
