@@ -41,6 +41,14 @@
                         Clientes
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 active" href="{{route('usuario.index')}}">
+                        <svg class="bi">
+                            <use xlink:href="#people" />
+                        </svg>
+                        Usuários
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
